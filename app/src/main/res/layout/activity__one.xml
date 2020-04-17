@@ -67,6 +67,7 @@
             android:text="OK"
             android:background="@color/colorPrimary"
             android:id="@+id/id_OK"
+            android:gravity="bottom"
             android:layout_alignParentBottom="true">
         </Button>
     </LinearLayout>
