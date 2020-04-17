@@ -23,53 +23,50 @@
             </TextView>
         </androidx.appcompat.widget.Toolbar>
     </LinearLayout>
-    <LinearLayout
+    
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nhiet Do Hom Nay: "
-            android:textSize="30dp">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="30*C"
-            android:id="@+id/id_nhietdo"
-            android:textSize="30dp">
-        </TextView>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
+            android:id="@+id/nhietdohomnay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30dp"
-            android:text="Tuy Chon">
+            android:text="Nhiet Do Hom Nay"
+            android:layout_marginLeft="20dp">
         </TextView>
-        <Spinner
+
+        <TextView
+            android:id="@+id/id_nhietdo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_Spinner">
+            android:textSize="30dp"
+            android:layout_toRightOf="@+id/nhietdohomnay">
+        </TextView>
+
+        <TextView
+            android:id="@+id/chonnhietdothichhop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chon Nhiet Do Thich Hop"
+            android:textSize="25dp"
+            android:layout_centerInParent="true">
+        </TextView>
+
+        <Spinner
+            android:id="@+id/id_Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/chonnhietdothichhop">
         </Spinner>
+
         <Button
+            android:id="@+id/id_OK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OK"
-            android:background="@color/colorPrimary"
-            android:id="@+id/id_OK"
-            android:gravity="bottom"
-            android:layout_alignParentBottom="true">
-        </Button>
-    </LinearLayout>
-
+            android:layout_alignParentBottom="true"
+            android:text="OK"></Button>
+    </RelativeLayout>
 </LinearLayout>
