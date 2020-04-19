@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements myInterface{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //key = getIntent().getStringExtra("keyAccount");
     }
 
 
@@ -28,13 +27,9 @@ public class MainActivity extends AppCompatActivity implements myInterface{
         bundle.putString("data", data);
         bundle.putString("keyAccount", key);
         bundle.putString("city", city);
-        SelectFragment selectFragment = new SelectFragment();
-        if(selectFragment.isInLayout() || selectFragment != null){//?
-            selectFragment.setArguments(bundle);
-        }
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.select_fragment, selectFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+
+        SelectFragment selectFragment = (SelectFragment) getSupportFragmentManager().
+                findFragmentById(R.id.select_fragment);
+        selectFragment.showData(bundle);
     }
 }
