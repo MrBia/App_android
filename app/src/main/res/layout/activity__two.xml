@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activity_Two">
 
     <LinearLayout
@@ -23,10 +24,50 @@
         </androidx.appcompat.widget.Toolbar>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/nhietdohientai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhiet do hien tai"
+            android:textSize="30dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/id_nhietdo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_toRightOf="@id/nhietdohientai">
+        </TextView>
+
+        <TextView
+            android:id="@+id/nhietdothichhopchoban"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhiet do thich hop cho ban"
+            android:textSize="30dp"
+            android:layout_below="@id/nhietdohientai">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_toRightOf="@id/nhietdothichhopchoban"
+            android:layout_below="@id/nhietdohientai">
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="OK">
+        </Button>
+    </RelativeLayout>
 
 </LinearLayout>

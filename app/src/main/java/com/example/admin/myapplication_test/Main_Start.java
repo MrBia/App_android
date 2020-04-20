@@ -2,6 +2,7 @@ package com.example.admin.myapplication_test;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -25,6 +26,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -35,7 +37,12 @@ public class Main_Start extends AppCompatActivity{
     EditText userName;
     EditText passWord;
     Button dangNhap;
+    CheckBox nhomatkhau;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static final String SPF_NAME = "remember_password";
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +52,34 @@ public class Main_Start extends AppCompatActivity{
         userName = (EditText) findViewById(R.id.username);
         passWord = (EditText) findViewById(R.id.password);
         dangNhap = (Button) findViewById(R.id.dangnhap);
+        nhomatkhau = (CheckBox) findViewById(R.id.nhomatkhau);
+        nhomatkhau.setChecked(true);
+
+        SharedPreferences loginPreferences = getSharedPreferences(SPF_NAME, Main_Start.MODE_PRIVATE);
+        userName.setText(loginPreferences.getString(USERNAME, ""));
+        passWord.setText(loginPreferences.getString(PASSWORD, ""));
 
         final ArrayList<User> users = null;
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             getValue(new DataUser() {
                 @Override
                 public void getValue(ArrayList<User> users) {
                     for(User user : users){
                         if(user.getUserName().equals(userName.getText().toString()) &&
                         user.getPassWord().equals(passWord.getText().toString())){
+                            // save account
+                            if(nhomatkhau.isChecked()){
+                                SharedPreferences loginPreferences = getSharedPreferences(SPF_NAME, Main_Start.MODE_PRIVATE);
+                                loginPreferences.edit().putString(USERNAME, userName.getText().toString()).
+                                        putString(PASSWORD, passWord.getText().toString()).commit();
+                            }else{
+                                SharedPreferences loginPreferences = getSharedPreferences(SPF_NAME, Main_Start.MODE_PRIVATE);
+                                loginPreferences.edit().clear().commit();
+                            }
+
+
                             Intent intent = new Intent(Main_Start.this, MainActivity.class);
                             intent.putExtra("keyAccount", user.getKey());
                             startActivity(intent);

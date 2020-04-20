@@ -63,6 +63,7 @@ public class SelectFragment extends Fragment {
                 }
                 else if(tudong.isChecked()){
                     Intent intent = new Intent(getActivity(), Activity_Two.class);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }
 
