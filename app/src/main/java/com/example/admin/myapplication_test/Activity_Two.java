@@ -1,5 +1,6 @@
 package com.example.admin.myapplication_test;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,12 +32,19 @@ public class Activity_Two extends AppCompatActivity {
         setContentView(R.layout.activity__two);
 
         OK = (Button) findViewById(R.id.btn_ok);
-        nhietdohientai = (TextView) findViewById(R.id.nhietdohientai);
-        nhietdothietlap = (TextView) findViewById(R.id.nhietdothichhopchoban);
+        nhietdohientai = (TextView) findViewById(R.id.id_nhietdo);
+        nhietdothietlap = (TextView) findViewById(R.id.id_nhietdothichhop);
 
         final Bundle bundle = getIntent().getExtras();
+        final String nhietdohientai_get = bundle.getString("data");
+        final String keyAccount = bundle.getString("keyAccount");
+        final String city = bundle.getString("city");
 
-        nd_thietlap = "25";
+
+        nhietdohientai.setText(bundle.getString("data") + " ℃");
+        nd_thietlap = "25" + " ℃";
+        nhietdothietlap.setText(nd_thietlap);
+
 
         OK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,12 +54,16 @@ public class Activity_Two extends AppCompatActivity {
                 Date today = new Date();
                 String s = dateFormat.format(today);
 
-                DatabaseReference myRef = database.getReference("Account").child(bundle.getString("keyAccount"));
+                DatabaseReference myRef = database.getReference("Account").child(keyAccount);
                 DataSave dataSave = new DataSave();
-                dataSave.setNhietdohientai(bundle.getString("data"));
+                dataSave.setNhietdohientai(nhietdohientai_get);
                 dataSave.setNhietdothietlap(nd_thietlap);
-                dataSave.setVitrihientai(bundle.getString("city"));
+                dataSave.setVitrihientai(city);
                 myRef.child("data").child(s).setValue(dataSave);
+
+
+                Intent intent = new Intent(Activity_Two.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

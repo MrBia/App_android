@@ -85,7 +85,7 @@ public class Main_Start extends AppCompatActivity{
                             startActivity(intent);
                         }
                         else {
-                            Toast.makeText(Main_Start.this, "Sai tai khoan", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(Main_Start.this, "Sai tai khoan", Toast.LENGTH_LONG).show();
                         }
                     }
                 }

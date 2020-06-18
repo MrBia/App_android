@@ -32,6 +32,8 @@
             android:id="@+id/nhietdohientai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
             android:text="Nhiet do hien tai"
             android:textSize="30dp">
         </TextView>
@@ -40,8 +42,10 @@
             android:id="@+id/id_nhietdo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:layout_toRightOf="@id/nhietdohientai">
+            android:layout_centerHorizontal="true"
+            android:text="haha"
+            android:textSize="70dp"
+            android:layout_below="@id/nhietdohientai">
         </TextView>
 
         <TextView
@@ -49,16 +53,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nhiet do thich hop cho ban"
+            android:layout_marginLeft="20dp"
             android:textSize="30dp"
-            android:layout_below="@id/nhietdohientai">
+            android:layout_below="@id/id_nhietdo">
         </TextView>
 
         <TextView
+            android:id="@+id/id_nhietdothichhop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:layout_toRightOf="@id/nhietdothichhopchoban"
-            android:layout_below="@id/nhietdohientai">
+            android:textSize="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/nhietdothichhopchoban">
         </TextView>
 
         <Button
@@ -66,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="@color/design_default_color_primary"
             android:text="OK">
         </Button>
     </RelativeLayout>

@@ -32,6 +32,8 @@
             android:id="@+id/nhietdohomnay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
             android:textSize="30dp"
             android:text="Nhiet Do Hom Nay"
             android:layout_marginLeft="20dp">
@@ -41,8 +43,11 @@
             android:id="@+id/id_nhietdo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:layout_toRightOf="@+id/nhietdohomnay">
+            android:textSize="70dp"
+            android:text="haha"
+            android:layout_below="@+id/nhietdohomnay"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp">
         </TextView>
 
         <TextView
@@ -51,22 +56,38 @@
             android:layout_height="wrap_content"
             android:text="Chon Nhiet Do Thich Hop"
             android:textSize="25dp"
-            android:layout_centerInParent="true">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp">
         </TextView>
 
-        <Spinner
-            android:id="@+id/id_Spinner"
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="50"
+            android:min="20"
+            android:layout_below="@+id/chonnhietdothichhop"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+        </SeekBar>
+
+        <TextView
+            android:id="@+id/tv_nhietdo_seekbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/chonnhietdothichhop">
-        </Spinner>
-
+            android:textSize="30dp"
+            android:text="fa"
+            android:layout_below="@+id/seekbar"
+            android:layout_centerHorizontal="true">
+        </TextView>
         <Button
             android:id="@+id/id_OK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="@color/design_default_color_primary"
             android:text="OK"></Button>
     </RelativeLayout>
 </LinearLayout>

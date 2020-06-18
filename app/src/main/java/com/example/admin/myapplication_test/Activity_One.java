@@ -1,5 +1,6 @@
 package com.example.admin.myapplication_test;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,9 +26,10 @@ import java.util.Date;
 
 
 public class Activity_One extends AppCompatActivity {
-    Spinner spinner;
     Button btn_ok;
     TextView tv_nhietdo;
+    SeekBar seekBar_nhietdo;
+    TextView tvNhietDoSeekBar;
 
     private String ketqua = "";
     private String[] nhietdo = {"10", "20", "30", "40", "50"};
@@ -35,35 +38,41 @@ public class Activity_One extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__one);
 
-        spinner = (Spinner) findViewById(R.id.id_Spinner);
         btn_ok = (Button) findViewById(R.id.id_OK);
         tv_nhietdo = (TextView) findViewById(R.id.id_nhietdo);
+        seekBar_nhietdo = (SeekBar) findViewById(R.id.seekbar);
+        tvNhietDoSeekBar = (TextView) findViewById(R.id.tv_nhietdo_seekbar);
 
         Bundle bundle = getIntent().getExtras();
         final String nhietdohientai = bundle.getString("data");
         final String keyAccount = bundle.getString("keyAccount");
         final String city = bundle.getString("city");
 
-        tv_nhietdo.setText(nhietdohientai);
+        tv_nhietdo.setText(nhietdohientai + " °C");
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, nhietdo);
-        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        seekBar_nhietdo.setProgress(25);
+        tvNhietDoSeekBar.setText(25+"");
+        seekBar_nhietdo.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ketqua = nhietdo[position];
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                ketqua = progress+"";
+                tvNhietDoSeekBar.setText(ketqua);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                ketqua = "";
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
+
 
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +93,9 @@ public class Activity_One extends AppCompatActivity {
                     dataSave.setNhietdothietlap(ketqua);
                     dataSave.setVitrihientai(city);
                     myRef.child("data").child(s).setValue(dataSave);
-                    Toast.makeText(Activity_One.this, "ok chon roi", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(Activity_One.this, MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });
